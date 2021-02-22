@@ -1,7 +1,12 @@
 /* This is a CSS comment */
+p {
+    color: red;
+}
+
 #canvas {
     border:1px solid #000000;
 }
+/*classes... */
 .container{
     margin: 0 auto;
     width: 2000px;

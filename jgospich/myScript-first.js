@@ -1,5 +1,5 @@
 //test code
-
+// I can inizialze variables with number and string
 // let myNum = 6;
 // const myName = "Chris";
 // alert(myName);
@@ -20,7 +20,11 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 // Create a function to draw a triangle on the canvas
+
+let drawTriangle= true
+let drawCircle=false
 function drawTriangle() {
+  if(true)
   ctx.beginPath();
   ctx.moveTo(75, 50);
   ctx.lineTo(100, 75);
@@ -35,6 +39,7 @@ function drawSquare() {
 }
 // Create a function to draw a circle on the canvas
 function drawCircle() {
+  if(false)
   ctx.beginPath();
   ctx.arc(100, 75, 50, 0, 2 * Math.PI);
   ctx.stroke();

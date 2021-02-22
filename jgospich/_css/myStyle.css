@@ -3,10 +3,11 @@ p {
     color: red;
 }
 
+/* this is an ID */
 #canvas {
     border:1px solid #000000;
 }
-/*classes... */
+/* this is a class... */
 .container{
     margin: 0 auto;
     width: 2000px;
@@ -33,4 +34,12 @@ p {
     height: 50px;
     width: 2000px;
     background-color: #FFFFFF
-}
+
+
+
+
+
+
+
+
+

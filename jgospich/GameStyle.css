@@ -1,0 +1,57 @@
+/* this adds styles to the game div */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+/* Centers on web page */
+#game{
+    width: 400px;
+    height: 500px;
+    border: 5px solid black;
+    margin: auto;
+    overflow: hidden;
+}
+/* turns character into a circle */
+/* Postion is relative so left and top actually effect the element */
+/* z-index allows character to always be on top */
+#character{
+    width: 20px;
+    height: 50px;
+    -moz-border-radius: 7.5px;
+    -webkit-border-radius: 7.5px;
+    border-radius: 15px;
+    background-color: yellow;
+    position: relative;
+    top: 400px;
+    left: 190px;
+    z-index: 1000000;
+}
+/* styles block */
+.block{
+    width: 400px;
+    height: 20px;
+    background-color: red;
+    position: relative;
+    top: 100px;
+    margin-top: -20px;
+}
+/* styles hole for character to go through  */
+.hole{
+    width: 40px;
+    height: 20px;
+    background-color: blue;
+    position: relative;
+    top: 100px;
+    margin-top: -20px;
+}
+.Spike{
+    width: 0;
+    height: 0;
+    border-bottom: 30px solid black
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    position: relative;
+    top: 100px;
+    margin-top: -20px;
+}

@@ -1,3 +1,4 @@
+// gets styles from css
 var character = document.getElementById("character");
 var game = document.getElementById("game");
 var interval;
@@ -5,6 +6,7 @@ var both = 0;
 var counter = 0;
 var currentBlocks = [];
 
+// Two functions that allow the character to move left or right
 function moveLeft(){
     var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
     if(left>0){
@@ -17,6 +19,8 @@ function moveRight(){
         character.style.left = left + 2 + "px";
     }
 }
+// Runs code anytime you click button on key board
+// Only runs if they click left or right arrow keys 
 document.addEventListener("keydown", event => {
     if(both==0){
         both++;
@@ -28,11 +32,14 @@ document.addEventListener("keydown", event => {
         }
     }
 });
+// This listens for when you unclick any of the keys 
 document.addEventListener("keyup", event => {
     clearInterval(interval);
+    // code only runs if they click one arrow at a time
     both=0;
 });
-
+//  Interval function creates blocks and holes over and over again
+// Keeps going for ever 
 var blocks = setInterval(function(){
     var blockLast = document.getElementById("block"+(counter-1));
     var holeLast = document.getElementById("hole"+(counter-1));
@@ -55,23 +62,28 @@ var blocks = setInterval(function(){
         game.appendChild(hole);
         currentBlocks.push(counter);
         counter++;
+        
     }
+    // sets drop back to zero if chaacter ia above the drop 
     var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
     var drop = 0;
     if(characterTop <= 0){
-        alert("Game over. Score: "+(counter-9));
+        alert("Dead. Score: "+(counter-9));
         clearInterval(blocks);
         location.reload();
     }
+    // for loop that creates new variable current that = array 
     for(var i = 0; i < currentBlocks.length;i++){
         let current = currentBlocks[i];
         let iblock = document.getElementById("block"+current);
         let ihole = document.getElementById("hole"+current);
         let iblockTop = parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"));
         let iholeLeft = parseFloat(window.getComputedStyle(ihole).getPropertyValue("left"));
+        // equal to top postion of the block 
         iblock.style.top = iblockTop - 0.5 + "px";
         ihole.style.top = iblockTop - 0.5 + "px";
+        // removes block if it is on top of the game 
         if(iblockTop < -20){
             currentBlocks.shift();
             iblock.remove();

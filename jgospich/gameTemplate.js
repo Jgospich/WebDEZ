@@ -49,21 +49,21 @@ document.addEventListener("keyup", event => {
 //  Interval function creates blocks and holes over and over again
 // Keeps going for ever 
 var blocks = setInterval(function(){
-    var blockLast = document.getElementById("block"+(counter-1));
-    var holeLast = document.getElementById("hole"+(counter-1));
+    var blockRecent = document.getElementById("block"+(counter-1));
+    var holeRecent = document.getElementById("hole"+(counter-1));
     if(counter>0){
-        var blockLastTop = parseInt(window.getComputedStyle(blockLast).getPropertyValue("top"));
-        var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"));
+        var blockRecentTop = parseInt(window.getComputedStyle(blockRecent).getPropertyValue("top"));
+        var holeRecentTop = parseInt(window.getComputedStyle(holeRecent).getPropertyValue("top"));
     }
-    if(blockLastTop<400||counter==0){
+    if(blockRecentTop<400||counter==0){
         var block = document.createElement("div");
         var hole = document.createElement("div");
         block.setAttribute("class", "block");
         hole.setAttribute("class", "hole");
         block.setAttribute("id", "block"+counter);
         hole.setAttribute("id", "hole"+counter);
-        block.style.top = blockLastTop + 100 + "px";
-        hole.style.top = holeLastTop + 100 + "px";
+        block.style.top = blockRecentTop + 100 + "px";
+        hole.style.top = holeRecentTop + 100 + "px";
         var random = Math.floor(Math.random() * 360);
         hole.style.left = random + "px";
         game.appendChild(block);
@@ -72,47 +72,46 @@ var blocks = setInterval(function(){
         counter++;
         
     }
-    // sets drop back to zero if chaacter ia above the drop 
+    // sets drop back to zero if chaacter is above the drop 
     var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
-    var drop = 0;
+    var fall = 0;
     if(characterTop <= 0){
         alert("Dead. Score: "+(counter-9));
+       // document.getElementById("character").innerHTML="hsduouohho";
         clearInterval(blocks);
-        location.reload();
+       location.reload();
     }
     // for loop that creates new variable current that = array 
     for(var i = 0; i < currentBlocks.length;i++){
         let current = currentBlocks[i];
-        let iblock = document.getElementById("block"+current);
-        let ihole = document.getElementById("hole"+current);
-        let iblockTop = parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"));
-        let iholeLeft = parseFloat(window.getComputedStyle(ihole).getPropertyValue("left"));
+        let ublock = document.getElementById("block"+current);
+        let uhole = document.getElementById("hole"+current);
+        let ublockTop = parseFloat(window.getComputedStyle(ublock).getPropertyValue("top"));
+        let uholeLeft = parseFloat(window.getComputedStyle(uhole).getPropertyValue("left"));
         // equal to top postion of the block 
-        iblock.style.top = iblockTop - 0.5 + "px";
-        ihole.style.top = iblockTop - 0.5 + "px";
+        ublock.style.top = ublockTop - 0.5 + "px";
+        uhole.style.top = ublockTop - 0.5 + "px";
         // removes block if it is on top of the game 
-        if(iblockTop < -20){
+        if(ublockTop < -20){
             currentBlocks.shift();
-            iblock.remove();
-            ihole.remove();
+            ublock.remove();
+            uhole.remove();
         }
-        if(iblockTop-20<characterTop && iblockTop>characterTop){
-            drop++;
-            if(iholeLeft<=characterLeft && iholeLeft+20>=characterLeft){
-                drop = 0;
+        if(ublockTop-20<characterTop && ublockTop>characterTop){
+            fall++;
+            if(uholeLeft<=characterLeft && uholeLeft+20>=characterLeft){
+                fall = 0;
             }
         }
-        if(characterTop +50< iblockTop && characterTop>iblockTop){
-            drop--;
+
+    }
+    if(fall==0){
+        if(characterTop < 480){
+            character.style.top = characterTop + 0.5 + "px";
         }
     }
-    if(drop==0){
-        if(characterTop < 480){
-            character.style.top = characterTop + 2 + "px";
-        }
-    }else if(drop<0){}
     else{
-        character.style.top = characterTop - 0.5 + "px";
+        character.style.top = characterTop - 0.1 + "px";
     }
 },1);

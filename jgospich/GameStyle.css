@@ -1,6 +1,6 @@
 /* this adds styles to the game div */
 
-*{
+#chuck{
     padding: 0;
     margin: 0;
 }
@@ -16,12 +16,10 @@
 /* Postion is relative so left and top actually effect the element */
 /* z-index allows character to always be on top */
 #character{
-    width: 20px;
-    height: 50px;
-    -moz-border-radius: 7.5px;
-    -webkit-border-radius: 7.5px;
-    border-radius: 15px;
-    background-color: yellow;
+    width: 25px;
+    height: 25px;
+    border-radius: 1px;
+    background-color: gold;
     position: relative;
     top: 400px;
     left: 190px;
@@ -45,6 +43,7 @@
     top: 100px;
     margin-top: -20px;
 }
+/** attempt at adding spike
 .Spike{
     width: 0;
     height: 0;
@@ -54,4 +53,5 @@
     position: relative;
     top: 100px;
     margin-top: -20px;
-}
+}*/
+

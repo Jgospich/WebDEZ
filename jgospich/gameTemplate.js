@@ -19,6 +19,11 @@ function moveRight(){
         character.style.left = left + 2 + "px";
     }
 }
+
+function moveUp(){
+    var down = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+   character.style.top = down - 3 + "px";
+    }
 // Runs code anytime you click button on key board
 // Only runs if they click left or right arrow keys 
 document.addEventListener("keydown", event => {
@@ -29,6 +34,9 @@ document.addEventListener("keydown", event => {
         }
         if(event.key==="ArrowRight"){
             interval = setInterval(moveRight, 1);
+        }
+        if(event.key==="ArrowUp"){
+            interval = setInterval(moveUp, 1);
         }
     }
 });
@@ -95,12 +103,16 @@ var blocks = setInterval(function(){
                 drop = 0;
             }
         }
+        if(characterTop +50< iblockTop && characterTop>iblockTop){
+            drop--;
+        }
     }
     if(drop==0){
         if(characterTop < 480){
             character.style.top = characterTop + 2 + "px";
         }
-    }else{
+    }else if(drop<0){}
+    else{
         character.style.top = characterTop - 0.5 + "px";
     }
 },1);

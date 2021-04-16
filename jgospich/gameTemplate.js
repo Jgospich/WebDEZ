@@ -6,7 +6,7 @@ var both = 0;
 var counter = 0;
 var currentBlocks = [];
 
-// Two functions that allow the character to move left or right
+// Three functions that allow the character to move left or right
 function moveLeft(){
     var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
     if(left>0){
@@ -112,6 +112,6 @@ var blocks = setInterval(function(){
         }
     }
     else{
-        character.style.top = characterTop - 0.1 + "px";
+        character.style.top = characterTop - 1 + "px";
     }
 },1);

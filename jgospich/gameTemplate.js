@@ -6,7 +6,7 @@ var both = 0;
 var counter = 0;
 var currentBlocks = [];
 
-// Three functions that allow the character to move left or right
+// Three functions that allow the character to move left, right, up
 function moveLeft(){
     var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
     if(left>0){
@@ -55,6 +55,7 @@ var blocks = setInterval(function(){
         var blockRecentTop = parseInt(window.getComputedStyle(blockRecent).getPropertyValue("top"));
         var holeRecentTop = parseInt(window.getComputedStyle(holeRecent).getPropertyValue("top"));
     }
+    // Counts how many times the character drops
     if(blockRecentTop<400||counter==0){
         var block = document.createElement("div");
         var hole = document.createElement("div");

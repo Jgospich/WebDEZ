@@ -11,7 +11,7 @@ p {
 .container{
     margin: 0 auto;
     width: 2000px;
-    height: 1000px;
+    height: 300px;
 }
 .blueblock {
     position: absolute;
@@ -33,13 +33,5 @@ p {
     float: right;
     height: 50px;
     width: 2000px;
-    background-color: #FFFFFF
-
-
-
-
-
-
-
-
-
+    background-color: white
+}
